@@ -14,16 +14,16 @@ class TourPage {
   }
   verifyTicketButton() {
     this.elements.lATicketContainer().should("contain.text", "Tickets").and("contain.text", "VIP")
-    this.elements.spTicketContainer().should("contain.text", "Tickets").and("not.contain.text", "VIP")
+    this.elements.spTicketContainer().should("contain.text", "Tickets").and("contain.text", "VIP") // forçando falha do teste!
   }
 }
 const tourPage = new TourPage()
 
 describe('Verify if tickets are available', () => {
   it('passes', () => {
-    cy.visit('/')
-    tourPage.elements.acceptButton().click()
-    tourPage.elements.tourButton().click()
+    cy.visit('/tour')
+    // tourPage.elements.acceptButton().click()
+    // tourPage.elements.tourButton().click()
     tourPage.verifyLabels()
     tourPage.verifyTicketButton()
   })
