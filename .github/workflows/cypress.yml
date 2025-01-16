@@ -8,7 +8,7 @@ on:
     branches:
       - main
   schedule:
-    - cron: '*/5 * * * *' # A cada 5 minutos
+    - cron: '*/15 * * * *' # A cada 5 minutos
 
 jobs:
   cypress-run:
@@ -33,7 +33,7 @@ jobs:
         if: failure()
         run: |
           curl -H "Content-Type: application/json" \
-               -d '{"username": "GitHub Actions", "content": "**Testes falharam!** Verifique os detalhes no workflow: $GITHUB_RUN_URL"}' \
+               -d '{"username": "GitHub Actions", "content": "**Ingressos do LP em SP liberados!** Você pode comprar aqui: https://linkinpark.com/tour"}' \
                $DISCORD_MATSU_WEBHOOK_URL
         env:
           DISCORD_MATSU_WEBHOOK_URL: ${{ secrets.DISCORD_MATSU_WEBHOOK_URL }}
