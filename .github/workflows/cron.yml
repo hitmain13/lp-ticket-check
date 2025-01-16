@@ -1,17 +1,44 @@
-# https://docs.github.com/en/actions/reference/events-that-trigger-workflows#scheduled-events
-name: Cron
+name: Cypress Workflow
+
 on:
   schedule:
-    - cron: '*/15 * * * *'
+    - cron: '*/1 * * * *'
 
 jobs:
-  cron:
+  setup:
+    name: Setup and Cache Dependencies
     runs-on: ubuntu-latest
     steps:
-      - run: date
+      - name: Checkout Code
+        uses: actions/checkout@v3
 
-  cron-schedule:
+      - name: Cache Node Modules
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Save Installed Cypress Binary
+        run: npx cypress cache path || echo "No Cypress binary to cache"
+
+  cypress:
+    name: Run Cypress Tests
+    needs: setup
     runs-on: ubuntu-latest
     steps:
-      - name: Every 5 minutes
-        run: echo "This workflow runs every 5 minutes"
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Restore Node Modules from Cache
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+
+      - name: Run Cypress
+        run: npx cypress run
