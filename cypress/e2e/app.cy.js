@@ -14,7 +14,7 @@ class TourPage {
   }
   verifyTicketButton() {
     this.elements.lATicketContainer().should("contain.text", "Tickets").and("contain.text", "VIP")
-    this.elements.spTicketContainer().should("contain.text", "Tickets").and("contain.text", "VIP") // forçando falha do teste!
+    this.elements.spTicketContainer().should("contain.text", "Tickets").and("not.contain.text", "VIP")
   }
 }
 const tourPage = new TourPage()
