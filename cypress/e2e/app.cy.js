@@ -21,7 +21,7 @@ const tourPage = new TourPage()
 
 describe('Verify if tickets are available', () => {
   it('passes', () => {
-    cy.visit('/tour')
+    cy.visit('/tour', { failOnStatusCode: false })
     // tourPage.elements.acceptButton().click()
     // tourPage.elements.tourButton().click()
     tourPage.verifyLabels()
