@@ -8,9 +8,20 @@ on:
     branches:
       - main
   schedule:
-    - cron: '*/5 * * * *'
+    - cron: '*/15 * * * *'
 
 jobs:
+  cron:
+  runs-on: ubuntu-latest
+  steps:
+    - run: date
+
+cron-schedule:
+  runs-on: ubuntu-latest
+  steps:
+    - name: Every 15 minutes
+      run: echo "This workflow runs every 15 minutes"
+
   cypress-run:
     runs-on: ubuntu-latest
 
