@@ -12,15 +12,15 @@ on:
 
 jobs:
   cron:
-  runs-on: ubuntu-latest
-  steps:
-    - run: date
+    runs-on: ubuntu-latest
+    steps:
+      - run: date
 
-cron-schedule:
-  runs-on: ubuntu-latest
-  steps:
-    - name: Every 15 minutes
-      run: echo "This workflow runs every 15 minutes"
+  cron-schedule:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Every 15 minutes
+        run: echo "This workflow runs every 15 minutes"
 
   cypress-run:
     runs-on: ubuntu-latest
