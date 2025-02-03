@@ -4,11 +4,11 @@ on:
   push:
     branches:
       - main
-  # pull_request:
-  #   branches:
-  #     - main
-  # schedule:
-  #   - cron: '*/59 * * * *'
+  pull_request:
+    branches:
+      - main
+  schedule:
+    - cron: '*/59 * * * *'
 
 jobs:
   cron:

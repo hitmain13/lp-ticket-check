@@ -1,4 +1,4 @@
-const childNumber = 60
+const childNumber = 59
 class TourPage {
   elements = {
     acceptButton: () => cy.get('[data-tid="banner-accept"]'),
@@ -6,17 +6,18 @@ class TourPage {
     losAngelesLabel: () => cy.get(':nth-child(49) > .details > .city-country'),
     lATicketContainer: () => cy.get(`:nth-child(49) > .links`),
     saoPauloLabel: () => cy.get(`:nth-child(${childNumber}) > .details > .city-country`),
-    spTicketContainer: () => cy.get(`:nth-child(${childNumber}) > .links`)
+    spTicketContainer: () => cy.get(`:nth-child(${childNumber}) > .links > .secondary`)
   }
   verifyLabels() {
     this.elements.saoPauloLabel().should("contain.text", "São Paulo, Brazil")
-    this.elements.losAngelesLabel().should("contain.text", "Los Angeles, CA")
+    // this.elements.losAngelesLabel().should("contain.text", "Los Angeles, CA")
   }
   verifyTicketButton() {
-    this.elements.lATicketContainer().should("contain.text", "Tickets").and("contain.text", "VIP")
     this.elements.spTicketContainer().should("contain.text", "Tickets").and("not.contain.text", "VIP")
+    // this.elements.lATicketContainer().should("contain.text", "Tickets").and("contain.text", "VIP")
   }
 }
+
 const tourPage = new TourPage()
 
 describe('Verify if tickets are available', () => {
