@@ -4,11 +4,11 @@ on:
   push:
     branches:
       - main
-  # pull_request:
-  #   branches:
-  #     - main
-  # schedule:
-  #   - cron: '*/59 * * * *'
+  pull_request:
+    branches:
+      - main
+  schedule:
+    - cron: '*/59 * * * *'
 
 jobs:
   cron:
@@ -44,7 +44,7 @@ jobs:
         if: failure()
         run: |
           curl -H "Content-Type: application/json" \
-               -d '{"username": "GitHub Actions", "content": "**Ingressos do LP em SP liberados!** Você pode comprar aqui: https://linkinpark.com/tour"}' \
+               -d '{"username": "GitHub Actions", "content": "**Pô, Matsu, deu ruim no teu teste de novo, mas checa lá se o ingresso ficou disponível: https://linkinpark.com/tour"}' \
                $DISCORD_MATSU_WEBHOOK_URL
         env:
           DISCORD_MATSU_WEBHOOK_URL: ${{ secrets.DISCORD_MATSU_WEBHOOK_URL }}
