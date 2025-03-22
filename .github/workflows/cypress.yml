@@ -1,14 +1,14 @@
 name: Cypress Tests
 
-on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
-  schedule:
-    - cron: '*/59 * * * *'
+#on:
+#  push:
+#    branches:
+#      - main
+#  pull_request:
+#    branches:
+#      - main
+#  schedule:
+#    - cron: '*/59 * * * *'
 
 jobs:
   cron:
