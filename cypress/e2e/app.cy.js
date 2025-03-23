@@ -38,7 +38,11 @@ class TourPage {
   }
 
   verifyLabels() {
-    this.elements.cityContainer("São Paulo, Brazil").not.should("exist");
+    this.elements.cityContainer("São Paulo, Brazil").should("exist");
+  }
+
+  verifyLabelsNotExist() {
+    this.elements.cityContainer("São Paulo, Brazil").should("not.exist");
   }
 
   verifyTicketButton() {
@@ -56,6 +60,8 @@ describe("Verify if tickets are available", () => {
   it("verifica se tem a label São Paulo, Brazil", () => {
     cy.visit("/tour", { failOnStatusCode: false });
 
-    tourPage.verifyLabels();
+    // tourPage.verifyLabels();
+    // tourPage.verifyTicketButton();
+    tourPage.verifyLabelsNotExist();
   });
 });
