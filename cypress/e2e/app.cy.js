@@ -60,8 +60,8 @@ describe("Verify if tickets are available", () => {
   it("verifica se tem a label São Paulo, Brazil", () => {
     cy.visit("/tour", { failOnStatusCode: false });
     cy.wait(3000);
-    // tourPage.verifyLabels();
+    tourPage.verifyLabels();
     // tourPage.verifyTicketButton();
-    tourPage.verifyLabelsNotExist();
+    // tourPage.verifyLabelsNotExist();
   });
 });
